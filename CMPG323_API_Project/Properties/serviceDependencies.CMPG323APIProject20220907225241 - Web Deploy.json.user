@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "apis1": {
+      "restored": true,
+      "restoreTime": "2022-09-07T20:58:27.5386078Z"
+    }
+  },
+  "parameters": {
+    "apis1.resourceGroupName": {
+      "Name": "apis1.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "CMPG323_Project2_27644227"
+    },
+    "apis1.subscriptionId": {
+      "Name": "apis1.subscriptionId",
+      "Type": "subscription",
+      "Value": "d8aa34fc-2065-44b6-a1e3-90e1fbb3a005"
+    }
+  }
+}

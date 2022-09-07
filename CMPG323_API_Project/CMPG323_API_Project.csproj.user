@@ -11,7 +11,7 @@
     <WebStackScaffolding_DbContextTypeFullName>CMPG323_API_Project.Models.CMPG323_Project_2_DBContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
     <ActiveDebugProfile>IIS Express</ActiveDebugProfile>
-    <NameOfLastUsedPublishProfile>C:\Users\Wessel\source\repos\CMPG323_API_Project\CMPG323_API_Project\Properties\PublishProfiles\CMPG323APIProject20220907102401 - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>C:\Users\Wessel\source\repos\CMPG323_API_Project\CMPG323_API_Project\Properties\PublishProfiles\CMPG323APIProject20220907225241 - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
