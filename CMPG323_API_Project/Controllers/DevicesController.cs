@@ -24,6 +24,11 @@ namespace CMPG323_API_Project.Controllers
             _context = context;
         }
 
+        private Device FindDevice(Guid id)
+        {
+            return _context.Device.Find(id);
+        }
+
         // GET: api/Devices
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Device>>> GetDevice()
@@ -51,7 +56,7 @@ namespace CMPG323_API_Project.Controllers
         [HttpPatch("{id}")]
         public async Task<IActionResult> PutDevice(Guid id, string deviceName, string status)
         {
-            var device = await _context.Device.FindAsync(id);
+            var device = FindDevice(id);
             device.Status = status;
             device.DeviceName = deviceName;
 
@@ -106,7 +111,7 @@ namespace CMPG323_API_Project.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Device>> DeleteDevice(Guid id)
         {
-            var device = await _context.Device.FindAsync(id);
+            var device = FindDevice(id);
             if (device == null)
             {
                 return NotFound();
