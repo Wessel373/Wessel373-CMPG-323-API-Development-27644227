@@ -118,6 +118,7 @@ namespace CMPG323_API_Project.Controllers
             return category;
         }
 
+
         private bool CategoryExists(Guid id)
         {
             return _context.Category.Any(e => e.CategoryId == id);

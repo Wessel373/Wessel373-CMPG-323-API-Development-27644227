@@ -48,13 +48,12 @@ namespace CMPG323_API_Project.Controllers
         // PUT: api/Devices/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutDevice(Guid id, Device device)
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> PutDevice(Guid id, string deviceName, string status)
         {
-            if (id != device.DeviceId)
-            {
-                return BadRequest();
-            }
+            var device = await _context.Device.FindAsync(id);
+            device.Status = status;
+            device.DeviceName = deviceName;
 
             _context.Entry(device).State = EntityState.Modified;
 
@@ -118,6 +117,12 @@ namespace CMPG323_API_Project.Controllers
 
             return device;
         }
+        /*
+        [HttpPatch("{id}")]
+        public async Task<Action<Device>> PatchDevice(Guid id)
+        { 
+            var device = _context.Device.FindAsync(id);
+        }*/
 
         private bool DeviceExists(Guid id)
         {
