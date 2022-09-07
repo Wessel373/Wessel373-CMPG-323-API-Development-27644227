@@ -10,9 +10,6 @@ namespace CMPG323_API_Project.Models
 {
     public partial class CMPG323_Project_2_DBContext : DbContext
     {
-        public CMPG323_Project_2_DBContext()
-        {
-        }
 
         public CMPG323_Project_2_DBContext(DbContextOptions<CMPG323_Project_2_DBContext> options)
             : base(options)

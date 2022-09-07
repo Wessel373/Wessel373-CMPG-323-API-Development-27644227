@@ -7,17 +7,19 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CMPG323_API_Project.Models;
 using Microsoft.AspNetCore.Authorization;
+using CMPG323_API_Project.Authentication;
 
 namespace CMPG323_API_Project.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    
+    [Authorize]
+
     public class DevicesController : ControllerBase
     {
-        private readonly CMPG323_Project_2_DBContext _context;
+        private readonly ApplicationDBContext _context;
 
-        public DevicesController(CMPG323_Project_2_DBContext context)
+        public DevicesController(ApplicationDBContext context)
         {
             _context = context;
         }

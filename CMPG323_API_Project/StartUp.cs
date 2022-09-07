@@ -10,6 +10,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using CMPG323_API_Project.Models;
+
 
 namespace CMPG323_API_Project
 {
@@ -27,11 +29,20 @@ namespace CMPG323_API_Project
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            
+
+            /*services.AddEntityFrameworkSqlServer();
+            services.AddDbContextPool<CMPG323_Project_2_DBContext>((serviceProvider, optionsBuilder) =>
+            {
+                optionsBuilder.UseSqlServer("Password=ser@WD276;Persist Security Info=False;User ID=WD27644227;Initial Catalog=CMPG323_Project_2_DB;Data Source=serv27644227proj2.database.windows.net");
+                optionsBuilder.UseInternalServiceProvider(serviceProvider);
+            });*/
+
             services.AddDbContextPool<ApplicationDBContext>(options =>
             options.UseSqlServer("Password=ser@WD276;Persist Security Info=False;User ID=WD27644227;Initial Catalog=CMPG323_Project_2_DB;Data Source=serv27644227proj2.database.windows.net"));
+            
             //services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Password=ser@WD276;Persist Security Info=False;User ID=WD27644227;Initial Catalog=CMPG323_Project_2_DB;Data Source=serv27644227proj2.database.windows.net")));
             // For Identity  
+            
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v2", new OpenApiInfo
                 {
