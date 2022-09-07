@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using CMPG323_API_Project.Models;
 using Microsoft.AspNetCore.Authorization;
 using CMPG323_API_Project.Authentication;
+using System.Security.Cryptography.X509Certificates;
 
 namespace CMPG323_API_Project.Controllers
 {
@@ -30,14 +31,14 @@ namespace CMPG323_API_Project.Controllers
         }
 
         // GET: api/Devices
-        [HttpGet]
+        [HttpGet("getDevices")]
         public async Task<ActionResult<IEnumerable<Device>>> GetDevice()
         {
             return await _context.Device.ToListAsync();
         }
 
         // GET: api/Devices/5
-        [HttpGet("{id}")]
+        [HttpGet("getDeviceById/{id}")]
         public async Task<ActionResult<Device>> GetDevice(Guid id)
         {
             var device = await _context.Device.FindAsync(id);
@@ -50,11 +51,24 @@ namespace CMPG323_API_Project.Controllers
             return device;
         }
 
+        [HttpGet("getByZoneId/{zoneId}")]
+        public async Task<ActionResult<IEnumerable<Device>>> GetDeviceByZoneId(Guid zoneId)
+        {
+            var device = await _context.Device.Where(x => x.ZoneId == zoneId).ToListAsync();
+
+            if (device == null)
+            {
+                return NotFound();
+            }
+
+            return device;
+        }
+
         // PUT: api/Devices/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPatch("{id}")]
-        public async Task<IActionResult> PutDevice(Guid id, string deviceName, string status)
+        [HttpPatch("patchDeviceById/{id}")]
+        public async Task<IActionResult> PatchDevice(Guid id, string deviceName, string status)
         {
             var device = FindDevice(id);
             device.Status = status;
@@ -84,7 +98,7 @@ namespace CMPG323_API_Project.Controllers
         // POST: api/Devices
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPost]
+        [HttpPost("createDevice")]
         public async Task<ActionResult<Device>> PostDevice(Device device)
         {
             _context.Device.Add(device);
@@ -108,7 +122,7 @@ namespace CMPG323_API_Project.Controllers
         }
 
         // DELETE: api/Devices/5
-        [HttpDelete("{id}")]
+        [HttpDelete("deleteDevice/{id}")]
         public async Task<ActionResult<Device>> DeleteDevice(Guid id)
         {
             var device = FindDevice(id);

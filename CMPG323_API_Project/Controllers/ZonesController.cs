@@ -24,6 +24,11 @@ namespace CMPG323_API_Project.Controllers
             _context = context;
         }
 
+        private Zone FindZone(Guid id)
+        {
+            return _context.Zone.Find(id);
+        }
+
         // GET: api/Zones
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Zone>>> GetZone()
@@ -76,7 +81,33 @@ namespace CMPG323_API_Project.Controllers
 
             return NoContent();
         }
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> PatchZone(Guid id, string zoneName, string zoneDescription)
+        {
+            var zone = FindZone(id);
+            zone.ZoneName = zoneName;
+            zone.ZoneDescription = zoneDescription;
 
+            _context.Entry(zone).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ZoneExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
         // POST: api/Zones
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
@@ -107,7 +138,7 @@ namespace CMPG323_API_Project.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Zone>> DeleteZone(Guid id)
         {
-            var zone = await _context.Zone.FindAsync(id);
+            var zone = FindZone(id);
             if (zone == null)
             {
                 return NotFound();
