@@ -23,15 +23,20 @@ namespace CMPG323_API_Project.Controllers
             _context = context;
         }
 
+        private Category FindCategory(Guid id)
+        {
+            return _context.Category.Find(id);
+        }
+
         // GET: api/Categories
-        [HttpGet]
+        [HttpGet("getAllCategories")]
         public async Task<ActionResult<IEnumerable<Category>>> GetCategory()
         {
             return await _context.Category.ToListAsync();
         }
 
         // GET: api/Categories/5
-        [HttpGet("{id}")]
+        [HttpGet("getCategoryById/{id}")]
         public async Task<ActionResult<Category>> GetCategory(Guid id)
         {
             var category = await _context.Category.FindAsync(id);
@@ -47,7 +52,7 @@ namespace CMPG323_API_Project.Controllers
         // PUT: api/Categories/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
+        [HttpPut("createCategory/{id}")]
         public async Task<IActionResult> PutCategory(Guid id, Category category)
         {
             if (id != category.CategoryId)
@@ -76,22 +81,25 @@ namespace CMPG323_API_Project.Controllers
             return NoContent();
         }
 
-        // POST: api/Categories
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPost]
-        public async Task<ActionResult<Category>> PostCategory(Category category)
+        //Patch Method 
+        [HttpPatch("patchCategoryById/{id}")]
+        public async Task<ActionResult<Category>> PatchCategory(Guid id, string categoryDescription, string categoryName)
         {
-            _context.Category.Add(category);
+            var category = FindCategory(id);
+            category.CategoryDescription = categoryDescription;
+            category.CategoryName = categoryName;
+
+            _context.Entry(category).State = EntityState.Modified;
+
             try
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateException)
+            catch (DbUpdateConcurrencyException)
             {
-                if (CategoryExists(category.CategoryId))
+                if (!CategoryExists(id))
                 {
-                    return Conflict();
+                    return NotFound();
                 }
                 else
                 {
@@ -99,14 +107,14 @@ namespace CMPG323_API_Project.Controllers
                 }
             }
 
-            return CreatedAtAction("GetCategory", new { id = category.CategoryId }, category);
+            return NoContent();
         }
 
         // DELETE: api/Categories/5
-        [HttpDelete("{id}")]
+        [HttpDelete("deleteCategory/{id}")]
         public async Task<ActionResult<Category>> DeleteCategory(Guid id)
         {
-            var category = await _context.Category.FindAsync(id);
+            var category = FindCategory(id);
             if (category == null)
             {
                 return NotFound();

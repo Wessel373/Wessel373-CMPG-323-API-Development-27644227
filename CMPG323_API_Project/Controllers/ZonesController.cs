@@ -30,14 +30,14 @@ namespace CMPG323_API_Project.Controllers
         }
 
         // GET: api/Zones
-        [HttpGet]
+        [HttpGet("getAllZones")]
         public async Task<ActionResult<IEnumerable<Zone>>> GetZone()
         {
             return await _context.Zone.ToListAsync();
         }
 
         // GET: api/Zones/5
-        [HttpGet("{id}")]
+        [HttpGet("getZoneById/{id}")]
         public async Task<ActionResult<Zone>> GetZone(Guid id)
         {
             var zone = await _context.Zone.FindAsync(id);
@@ -53,7 +53,7 @@ namespace CMPG323_API_Project.Controllers
         // PUT: api/Zones/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
+        [HttpPut("createZone/{id}")]
         public async Task<IActionResult> PutZone(Guid id, Zone zone)
         {
             if (id != zone.ZoneId)
@@ -81,7 +81,7 @@ namespace CMPG323_API_Project.Controllers
 
             return NoContent();
         }
-        [HttpPatch("{id}")]
+        [HttpPatch("patchZoneById/{id}")]
         public async Task<IActionResult> PatchZone(Guid id, string zoneName, string zoneDescription)
         {
             var zone = FindZone(id);
@@ -111,7 +111,7 @@ namespace CMPG323_API_Project.Controllers
         // POST: api/Zones
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPost]
+        [HttpPost("createZone")]
         public async Task<ActionResult<Zone>> PostZone(Zone zone)
         {
             _context.Zone.Add(zone);
@@ -135,7 +135,7 @@ namespace CMPG323_API_Project.Controllers
         }
 
         // DELETE: api/Zones/5
-        [HttpDelete("{id}")]
+        [HttpDelete("deleteZone{id}")]
         public async Task<ActionResult<Zone>> DeleteZone(Guid id)
         {
             var zone = FindZone(id);

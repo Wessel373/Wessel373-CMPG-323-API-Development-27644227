@@ -141,3 +141,5 @@ C:\Users\Wessel\source\repos\CMPG323_API_Project\CMPG323_API_Project\bin\Release
 C:\Users\Wessel\source\repos\CMPG323_API_Project\CMPG323_API_Project\bin\Release\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\Wessel\source\repos\CMPG323_API_Project\CMPG323_API_Project\bin\Release\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
 C:\Users\Wessel\source\repos\CMPG323_API_Project\CMPG323_API_Project\bin\Release\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\Wessel\source\repos\CMPG323_API_Project\CMPG323_API_Project\bin\Release\netcoreapp3.1\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Wessel\source\repos\CMPG323_API_Project\CMPG323_API_Project\bin\Release\netcoreapp3.1\System.Text.Json.dll

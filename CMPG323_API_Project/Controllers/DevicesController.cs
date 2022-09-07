@@ -31,7 +31,7 @@ namespace CMPG323_API_Project.Controllers
         }
 
         // GET: api/Devices
-        [HttpGet("getDevices")]
+        [HttpGet("getAllDevices")]
         public async Task<ActionResult<IEnumerable<Device>>> GetDevice()
         {
             return await _context.Device.ToListAsync();
@@ -64,9 +64,20 @@ namespace CMPG323_API_Project.Controllers
             return device;
         }
 
-        // PUT: api/Devices/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [HttpGet("getDeviceByCategoryId/{categoryId}")]
+        public async Task<ActionResult<IEnumerable<Device>>> GetCategoryId(Guid categoryId)
+        {
+            var device = await _context.Device.Where(x => x.CategoryId == categoryId).ToListAsync();
+
+            if (device == null)
+            {
+                return NotFound();
+            }
+
+            return device;
+        }
+
+        // PATCH Method
         [HttpPatch("patchDeviceById/{id}")]
         public async Task<IActionResult> PatchDevice(Guid id, string deviceName, string status)
         {
