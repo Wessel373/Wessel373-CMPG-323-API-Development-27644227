@@ -50,7 +50,27 @@ namespace CMPG323_API_Project.Controllers
             return zone;
         }
 
-        
+        [HttpGet("getNumberOfZonesByCategory/{categoryId}")]
+        public async Task<ActionResult<int>> GetNumberOfZonesByCategory(Guid categoryId)
+        {
+            var devices = await _context.Device.Where(x => x.CategoryId == categoryId).ToListAsync();
+
+            if (devices.Count < 1)
+            {
+                return NotFound();
+            }
+
+            List<Guid> zones = new List<Guid>();
+
+            foreach (var device in devices)
+            {
+                if (!zones.Contains(device.ZoneId))
+                { 
+                    zones.Add(device.ZoneId);
+                }
+            }
+            return zones.Count;
+        }
 
         // PUT: api/Zones/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
