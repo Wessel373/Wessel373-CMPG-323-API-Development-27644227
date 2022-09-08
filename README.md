@@ -11,6 +11,7 @@ Open the project in Visual Studio
 ### Step 3:
 Click on the ISS play button to build and run the project(A browser will appear with swagger page showing)
 
+## Following steps are for Running it from Azure or Local Visual Studio(Use of Swagger UI):
 ### Step 4:
 * Open the **POST**/api/Authenticate/register-admin or **POST**/api/Authenticate/register method and **click** on *"try it out"*
 * Then in the request body add a username, password and emailaddress(**Ensure the password has atleast one uppercase letter, one Special charater and one number and the password must be a minimum of 8 characters **"1234Un!x"**)
