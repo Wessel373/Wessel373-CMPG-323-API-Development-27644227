@@ -58,3 +58,19 @@ Click on the ISS play button to build and run the project(A browser will appear 
 * **POST**/api/Device/createDevice
 
 * **DELETE**/api/Device/deleteDevice/{id}
+
+#### Zone Methods
+
+* **GET**/api/Zones/getAllZones
+
+* **GET**/api/Zones/getZoneById/{id}
+
+* **GET**/api/Zones/getNumberOfZonesByCategory/{categoryId}
+
+* **PUT**/api/Zones/createZone/{id}
+
+* **PATCH**/api/Zones/patchZoneById/{id}
+
+* **POST**/api/Zones/createZone
+
+* **DELETE**/api/Zones/delete
