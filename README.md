@@ -42,3 +42,19 @@ Click on the ISS play button to build and run the project(A browser will appear 
 * **PATCH**/api/categories/patchCategoriesById/{id}
 
 * **DELETE**/api/categories/deleteCategories/{id}
+
+#### Device Methods
+
+* **GET**/api/Device/getAllDevices
+
+* **GET**/api/Device/getAllDeviceById/{id}
+
+* **GET**/api/Device/getByZonedId/{zoneId}
+
+* **GET**/api/Device/getDeviceByCategoryId/{categoryId}
+
+* **PATCH**/api/Device/patchDeviceById/{id}
+
+* **POST**/api/Device/createDevice
+
+* **DELETE**/api/Device/deleteDevice/{id}
