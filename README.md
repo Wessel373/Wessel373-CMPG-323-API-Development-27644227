@@ -13,7 +13,7 @@ Click on the ISS play button to build and run the project(A browser will appear 
 
 ### Step 4:
 * Open the **POST**/api/Authenticate/register-admin or **POST**/api/Authenticate/register method and **click** on *"try it out"*
-* Then in the request body add a username, password and emailaddress(**Ensure the password has all the diffirent type like "1234Un!x"**)
+* Then in the request body add a username, password and emailaddress(**Ensure the password has all the diffirent types like "1234Un!x"**)
 * **click** on *"Execute"*
 * Check if the Response is a **Success** **200** 
 
