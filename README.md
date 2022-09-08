@@ -31,6 +31,10 @@ Click on the ISS play button to build and run the project(A browser will appear 
 *  **click** "Authorize" and close the popup, now all the methods are Authorzed
 
 ### Step 7: Using The Different Methods
+To use the below mentiond methods open the selected method **click** on the *"try it out"* button, 
+fill in the required fields in the json body and **click** ont the *"Execute"* button.
+ 
+ **Make sure that database values are created with the PUTmethods before running GET, PATCH OR DELETE methods**
 
 #### Categories Methods
 
